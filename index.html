@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pluralsights</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+</head>
+<body>
+    <div id="app">
+        <div v-if='!canConnect'>Connection Error</div>
+        <table class='table table-dark'>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Order</th>
+            </tr>
+            <tr v-for='beer in beers'>
+                <td>{{beer.name}}</td>
+                <td>{{beer.price}}</td>
+                <td><button class="btn btn-secondary" @click='addElement(beer)'>Buy</button></td>
+            </tr>
+            <tr>
+                <th>Total Price</th>
+                <th>{{shoppingCart.totalCost}}</th>
+                <th><button class="btn btn-primary" @click='submitOrder'>Submit</button></th>
+            </tr>
+        </table>
+        <div class="card text-white bg-success mb-3" style="width:60%; margin:0 auto;" v-if='isSuccesseded'>
+                <div class="card-body">
+                    <p class="card-text" style='text-align: center;'>Your Order Submitted Successfully</p>
+                    <button @click='addNewOrder'>New Order</button>
+                </div>
+        </div>
+    </div>
+    <script src='vue.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src='script.js'></script>
+</body>
+</html>
