@@ -20,11 +20,14 @@
             <tr v-for='beer in beers'>
                 <td>{{beer.name}}</td>
                 <td>{{beer.price}}</td>
+                <td>{{beer.ibu | convertIBU}}</td>
+
                 <td><button class="btn btn-secondary" @click='addElement(beer)'>Buy</button></td>
             </tr>
             <tr>
                 <th>Total Price</th>
                 <th>{{shoppingCart.totalCost}}</th>
+                <th></th>
                 <th><button class="btn btn-primary" @click='submitOrder'>Submit</button></th>
             </tr>
         </table>

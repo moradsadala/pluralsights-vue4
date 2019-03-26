@@ -14,8 +14,8 @@ var app = new Vue({
     data:{
         isSuccesseded:false,
         beers:[
-            {name:'Ahool Ale' , price:2.8},
-            {name:'Agoge Ale' , price:3.0}
+            {name:'Ahool Ale' , price:2.8 , ibu:'33 i.b.u'},
+            {name:'Agoge Ale' , price:3.0 , ibu:'30 i.b.u'}
         ],
         shoppingCart:{
             items : [],
@@ -23,9 +23,19 @@ var app = new Vue({
         },
         canConnect:false
     },
+    filters:{
+        convertIBU: function(value){
+            if(!value) {return '';}
+            value = value.toString();
+            value = value.replace(/\./g,'');
+            return value.toUpperCase();
+        }
+    },
     computed:{
-        isOnline:function(){
+        isOnline:{
+            get:function(){
             return this.canConnect ? 'Yes':'No';
+            }
         }
     },
     methods:{
